@@ -31,8 +31,12 @@ backend - spring boot
   <hr>
 <div style="align-items:center; text-align:center">
   <img style="width:300px; height:600px; align-items:center; text-align:center; " src="https://github.com/P-Chanyeop/phocally-app/assets/112680039/196f4056-da1b-4a18-88e1-c3db450e3a34"/>
-
+<br>
 <img style="width:300px; height:600px; align-items:center; text-align:center;" src="https://github.com/P-Chanyeop/phocally-app/assets/112680039/c934f720-e6b2-4deb-a151-052f19dc73be" />
+<br>
+<img style="width:400px; height:500px;" src="https://github.com/P-Chanyeop/phocally-app/assets/112680039/c1aef0fc-9662-4c87-a7d3-58239ce81c31" />
+
+
 </div>
 
 <h1>Front 구현</h1>

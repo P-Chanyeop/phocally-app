@@ -7,7 +7,7 @@ import 'package:phocally/screens/test.dart';
 import 'package:provider/provider.dart';
 import 'package:phocally/providers/row_option.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'package:phocally/screens/diary.dart';
 
 
 void main() {
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context) => Row_option(),
       child: MaterialApp(
-          home: Main()
+          // home: Main()
+          home: Diary(),
       ),
     );
   }

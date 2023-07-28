@@ -8,18 +8,18 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
-  final String JAN = "images/JAN.png";
-  final String FEB = "images/FEB.png";
-  final String MAR = "images/MAR.png";
-  final String APR = "images/APR.png";
-  final String MAY = "images/MAY.png";
-  final String JUN = "images/JUN.png";
-  final String JUL = "images/JUL.png";
-  final String AUG = "images/AUG.png";
-  final String SEP = "images/SEP.png";
-  final String OCT = "images/OCT.png";
-  final String NOV = "images/NOV.png";
-  final String DEC = "images/DEC.png";
+  final String JAN = "assets/images/JAN.png";
+  final String FEB = "assets/images/FEB.png";
+  final String MAR = "assets/images/MAR.png";
+  final String APR = "assets/images/APR.png";
+  final String MAY = "assets/images/MAY.png";
+  final String JUN = "assets/images/JUN.png";
+  final String JUL = "assets/images/JUL.png";
+  final String AUG = "assets/images/AUG.png";
+  final String SEP = "assets/images/SEP.png";
+  final String OCT = "assets/images/OCT.png";
+  final String NOV = "assets/images/NOV.png";
+  final String DEC = "assets/images/DEC.png";
   final double scale = 16;
 
   @override
@@ -52,7 +52,7 @@ class _LibraryState extends State<Library> {
             child: Column(
               children: [
                 SizedBox(height: 100,),
-                Image.asset("images/library.png", width: 500, height: 500,),
+                Image.asset("assets/images/library.png", width: 500, height: 500,),
               ],
             ),
           ),
@@ -63,14 +63,19 @@ class _LibraryState extends State<Library> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: (){},
+                    ElevatedButton(onPressed: (){
+                      print("JAN is clicked");
+                    },
                       child: Image.asset(JAN, scale: scale,),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white, // Background color
                       ),
                     ),
                     SizedBox(width: 30,),
-                    ElevatedButton(onPressed: (){},
+                    ElevatedButton(onPressed: (){
+                      print("JAN is clicked");
+
+                    },
                       child: Image.asset(FEB, scale: scale,),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white, // Background color

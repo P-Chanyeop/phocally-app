@@ -4,6 +4,7 @@
 
     <application
         android:label="phocally"
+        android:requestLegacyExternalStorage="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

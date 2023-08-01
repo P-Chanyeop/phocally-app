@@ -14,7 +14,7 @@ import 'imagePicker.dart' as imagePicker;
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:phocally/screens/details.dart';
 void main() {
   runApp(
     MultiProvider(
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context) => Row_option(),
       child: MaterialApp(
-          home: Main()
+          home: Details()
           // home:
         // ImagePickerScreen(),
       ),
@@ -56,7 +56,6 @@ class _MainState extends State<Main> {
   final imagePicker.ImagePickerScreen imagepicker = imagePicker.ImagePickerScreen();
   final ImagePicker _picker = ImagePicker();
   final List<XFile?> _pickedImages = [];
-
   // 카메라, 갤러리에서 이미지 1개 불러오기
   // ImageSource.galley , ImageSource.camera
   void getImage(ImageSource source) async {
@@ -82,26 +81,34 @@ class _MainState extends State<Main> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            child: ElevatedButton(
+            width: 100,
+            height: 0,
+            child: IconButton(
+              icon: Icon(Icons.camera_enhance),
+              color: Colors.red,
+              iconSize: 30.0,
               onPressed: () => getImage(ImageSource.camera),
-              child: const Text('Camera'),
             ),
           ),
-          const SizedBox(width: 5),
+          const SizedBox(width: 0),
+          // SizedBox(
+          //   child: ElevatedButton(
+          //     onPressed: () => getImage(ImageSource.gallery),
+          //     child: const Text('개짜증나네ㅡㅡ'),
+          //   ),
+          // ),
+          const SizedBox(height: 50),
           SizedBox(
-            child: ElevatedButton(
-              onPressed: () => getImage(ImageSource.gallery),
-              child: const Text('개짜증나네ㅡㅡ'),
-            ),
-          ),
-          const SizedBox(width: 5),
-          SizedBox(
-            child: ElevatedButton(
-              onPressed: () => getMultiImage(),
-              child: const Text('Multi Image'),
+            width: 100,
+            height: 0,
+            child: IconButton(
+              icon: Icon(Icons.add_a_photo),
+              color: Colors.orangeAccent,
+              iconSize: 30.0,
+              onPressed: () {getMultiImage();},
             ),
           ),
         ],
@@ -129,7 +136,25 @@ class _MainState extends State<Main> {
           : const SizedBox(),
     );
   }
-
+  Widget _gridPhoto2() {
+    return SizedBox(
+      width: 260,
+      height: 260,
+      child: _pickedImages.isNotEmpty
+          ? GridView(
+        scrollDirection: Axis.horizontal,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          // crossAxisCount: 3,
+          crossAxisCount: 1,
+        ),
+        children: _pickedImages
+            .where((element) => element != null)
+            .map((e) => _gridPhotoItem(e!))
+            .toList(),
+      )
+          : const SizedBox(),
+    );
+  }
   Widget _gridPhotoItem(XFile e) {
     return Padding(
       padding: const EdgeInsets.all(2.0),

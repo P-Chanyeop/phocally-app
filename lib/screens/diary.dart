@@ -12,6 +12,7 @@ class Diary extends StatefulWidget {
 class _DiaryState extends State<Diary> {
   final textFieldController = TextEditingController();
   int maxlines = 30;
+  bool selected = false;
   @override
   void dispose(){
     textFieldController.dispose();
@@ -64,32 +65,90 @@ class _DiaryState extends State<Diary> {
             ],
           ),
           SizedBox(height: 30,),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-              child: SafeArea(
-                child: TextField(
+          // Padding(
+          //   padding: EdgeInsets.all(10.0),
+          //     child: SafeArea(
+          //       child: TextField(
+          //         controller: textFieldController,
+          //           onTapOutside: (event){
+          //             FocusManager.instance.primaryFocus?.unfocus();
+          //             setState(() {
+          //               maxlines = 30;
+          //               selected = false;
+          //             });
+          //           },
+          //           onTap: (){
+          //               setState(() {
+          //                 maxlines = 5;
+          //                 selected = true;
+          //               });
+          //             },
+          //           decoration: InputDecoration(
+          //             focusedBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(
+          //                 color: Colors.redAccent,
+          //                 width: 2.0,
+          //               ),
+          //             ),
+          //             enabledBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(
+          //                 color: Colors.orange,
+          //                 width: 2.0,
+          //               ),
+          //             ),
+          //           ),
+          //           maxLines: maxlines,
+          //           style: Theme.of(context).textTheme.bodyLarge,
+          //         ),
+          //     ),
+          //     ),
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            selected = !selected;
+          });
+        },
+
+        child:
+      AnimatedContainer(
+        width: selected ? 300.0 : 300.0,
+        height: selected ? 300.0 : 500.0,
+        alignment:
+        selected ? Alignment.center : AlignmentDirectional.topCenter,
+        duration: Duration(milliseconds: 500),
+        decoration: BoxDecoration(
+          border: selected
+              ? Border.all(color: Colors.blueAccent, width: 3)
+              : Border.all(color: Colors.orange, width: 3),
+
+          color: selected ? Colors.white : Colors.white38,
+        ),
+        curve: Curves.fastOutSlowIn,
+        child:TextField(
                   controller: textFieldController,
                     onTapOutside: (event){
                       FocusManager.instance.primaryFocus?.unfocus();
                       setState(() {
                         maxlines = 30;
+                        selected = false;
                       });
                     },
                     onTap: (){
                         setState(() {
-                          maxlines = 5;
+                          maxlines = 15;
+                          selected = true;
                         });
                       },
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.redAccent,
+                          color: Colors.white38,
                           width: 2.0,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.orange,
+                          color: Colors.white38,
                           width: 2.0,
                         ),
                       ),
@@ -97,8 +156,7 @@ class _DiaryState extends State<Diary> {
                     maxLines: maxlines,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-              ),
-              ),
+      ),),
         ],
       ),
     );
